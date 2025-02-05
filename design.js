@@ -15,3 +15,21 @@ open_menu.onclick = () => {
     ? open_menu.className.replaceAll("left", "right")
     : open_menu.className.replaceAll("right", "left");
 };
+
+const header_buttons = document.querySelectorAll(".add-client-btn");
+
+header_buttons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    let x = event.clientX - event.target.offsetLeft;
+    let y = event.clientY - event.target.offsetTop;
+    let ripples = document.createElement("span");
+    ripples.classList.add("button-upper-hover");
+    console.log(ripples, 27);
+    ripples.style.left = x + "px";
+    ripples.style.top = y + "px";
+    button.appendChild(ripples);
+    setTimeout(() => {
+      ripples.remove();
+    }, 1000);
+  });
+});
