@@ -94,7 +94,7 @@
       <!---------------------Header End----------------------->
 
       <!---------------------Main Section Start--------------->
-      <main class="main-layout">
+      <main class="main-layout" id="main-layout">
         <div class="table-header pe-3 d-flex justify-content-between py-2">
           <div class="search-input my-1">
             <i class="bx bx-search-alt bx-burst"></i>
@@ -146,7 +146,7 @@
                 <td>45</td>
                 <td>10</td>
                 <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
+                  <button type="button" class="manage-btn" onclick="handleNavigate()">Manage</button>
                 </td>
               </tr>
               <tr>
@@ -368,8 +368,76 @@
       </main>
       <!---------------------Main Section End----------------->
 
+      <!---------------------Manage Section Start-------------> 
+      <main class="manage-layout" id="manage-layout">
+         <ul>
+          <li><a href=""><i class="bx bx-home-alt bx-tada-hover pe-1 pb-2"></i>Manage <i class='bx bx-chevron-right'></i></a></li>
+          <li><a  id="bd" onclick="handleBread('basic-details')">Basic Details <i class='bx bx-chevron-right'></i></a></li>
+          <li><a  id="f" onclick="handleBread('features')">Features <i class='bx bx-chevron-right'></i></a></li>
+          <li><a  id="ds" onclick="handleBread('')">Default settings</a></li>
+         </ul>
+         <section>
+         <div id="basic-details">
+            <label>Edit Basic Details </label>
+            <div class="d-flex gap-3 flex-wrap mt-4">
+              <div class="position-relative">
+              <input class="basic-input" placeholder="Logo"/>
+              <i class='bx bx-check bx-check-rounded pe-4'></i>
+              <i class='bx bx-x text-danger' ></i>
+             </div>
+             <div class="position-relative">
+              <input class="basic-input" placeholder="Client Code"/>
+              <i class='bx bx-check bx-check-rounded pe-4'></i>
+              <i class='bx bx-x text-danger' ></i>
+              </div>
+              <div class="position-relative">
+              <input class="basic-input" placeholder="Client Name"/>
+              <i class='bx bx-check bx-check-rounded pe-4'></i>
+              <i class='bx bx-x text-danger' ></i>
+            </div>
+            <div class="position-relative">
+              <input class="basic-input" placeholder="Admin"/>
+              <i class='bx bx-check bx-check-rounded pe-4'></i>
+              <i class='bx bx-x text-danger' ></i>
+            </div>
+            <div class="position-relative">
+              <input class="basic-input" placeholder="Admin Code"/>
+              <i class='bx bx-check bx-check-rounded pe-4'></i>
+              <i class='bx bx-x text-danger' ></i>
+            </div>
+         </div>
+         <footer class="mt-5">
+           <button class="client-create-btn">Save</button>
+         </footer>
+        </section>
+
+        <section>
+          <div id="features">
+            <div class="text-secendory">Apply Features Details </div>
+            <div class="d-flex gap-4 flex-wrap mt-5">
+              <div class="position-relative d-flex gap-2">
+              <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
+              <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
+             </div>
+             <div class="position-relative d-flex gap-2">
+              <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
+              <label class="lite-grey" for="checkbox2">video recording</label>
+              </div>
+              <div class="position-relative d-flex gap-2"">
+              <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
+              <label class="lite-grey" for="checkbox3">Auto proctoring</label>
+            </div>
+         </div>
+         <footer class="mt-5">
+           <button class="client-create-btn">Apply</button>
+         </footer>
+          </div>
+        </section>
+      </main>
+      <!---------------------Manage Section End--------------->
+
       <!---------------------Popup Start---------------------->
-       <section id="add-client-popup" class="d-flex flex-column justify-content-around px-4"> 
+       <!-- <section id="add-client-popup" class="d-flex flex-column justify-content-around px-4"> 
          <div class="client-card d-flex flex-column align-items-center">
             <label class="align-self-center">Add New Client</label>
            <input type="text" placeholder="Client Name" class="mt-3"/>
@@ -378,7 +446,7 @@
          <div class="text-end">
          <button class="client-create-btn" >Create</button>
         </div>
-       </section>
+       </section> -->
       <!---------------------Popup End------------------------>
     </section>
     <script src="design.js"></script>

@@ -24,7 +24,6 @@ header_buttons.forEach((button) => {
     let y = event.clientY - event.target.offsetTop;
     let ripples = document.createElement("span");
     ripples.classList.add("button-upper-hover");
-    console.log(ripples, 27);
     ripples.style.left = x + "px";
     ripples.style.top = y + "px";
     button.appendChild(ripples);
@@ -33,3 +32,22 @@ header_buttons.forEach((button) => {
     }, 1000);
   });
 });
+
+const handleNavigate = () => {
+  const main_layout = document.getElementById("main-layout");
+  const manage_layout = document.getElementById("manage-layout");
+  main_layout.style.display = "none";
+  manage_layout.style.display = "block";
+};
+
+const handleBread = (value) => {
+  const static = ["basic-details", "features"];
+  static.forEach((e) => {
+    const Element = document.getElementById(e);
+    if (e === value) {
+      Element.style.display = "block";
+    } else {
+      Element.style.display = "none";
+    }
+  });
+};
