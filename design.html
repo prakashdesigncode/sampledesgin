@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="design.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="navbar.css" /> -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Playwrite+VN:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rokkitt:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <nav class="sidebar">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img
+              alt="logo"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+            />
+          </span>
+        </div>
+      </header>
+    </nav> --> 
+    <section class="nav-bar d-flex justify-content-between flex-column position-relative">
+      <div class="d-flex align-items-center mt-4 position-relative" style="overflow: hidden;">
+        <img
+          class="admin-image ms-3"
+          alt="admin"
+          width="40"
+          height="40"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+        />
+        <div class="topic ms-3 text-uppercase">Clients Management</div>
+      </div>
+      <i class="bx bxs-chevron-left bx-fade-left-hover" id="toggle-menu"></i>
+      <div class="main-menu">
+        <ul>
+          <li class="d-flex align-items-center bg-lite-green">
+            <i class="bx bx-home-alt bx-tada pe-4"></i
+            ><span class="nav-link-custom">Dashboard</span>
+          </li>
+          <li class="d-flex align-items-center"><i class='bx bx-edit-alt  pe-4' ></i></i><span class="nav-link-custom">Exams</span></li>
+          <li class="d-flex align-items-center"><i class='bx bx-spreadsheet  pe-4' ></i><span class="nav-link-custom">Sheduling</span></li>
+          <li class="d-flex align-items-center"><i class='bx bx-badge-check  pe-4' ></i><span class="nav-link-custom">Admin</span></li>
+        </ul>
+      </div>
+      <div class="logout-menu">
+        <ul>
+          <li class="d-flex align-items-center"><i class='bx bx-log-out-circle pe-4' ></i><span class="nav-link-custom">Logout</span></li>
+        </ul>
+      </div>
+    </section>
+    <section class="main-container">
+      <!---------------------Header Start--------------------->
+      <header class="header d-flex justify-content-end align-items-center">
+        <!-- <div>
+         <div> <strong>Clients</strong></div>
+         <div><strong>All Information</strong></div> 
+        </div> -->
+        <div class="d-flex align-items-center gap-2">
+          <i class="bx bxs-bell-ring bx-tada me-4"></i>
+          <img
+            class="admin-image"
+            alt="admin"
+            width="35"
+            height="35"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+          />
+          <span class="user-type">Admin</span>
+        </div>
+      </header>
+      <!---------------------Header End----------------------->
+
+      <!---------------------Main Section Start--------------->
+      <main class="main-layout">
+        <div class="table-header pe-3 d-flex justify-content-between py-2">
+          <div class="search-input my-1">
+            <i class="bx bx-search-alt bx-burst"></i>
+            <input type="text" class="search ms-3" placeholder="Search..." />
+            <i class="bx bx-x bx-tada-hover"></i>
+          </div>
+          <div class="d-flex gap-3 align-items-center">
+            <div>
+              <button class="add-client-btn">
+                <i class="fa fa-filter lite-grey me-2"></i>Filter
+              </button>
+            </div>
+            <div>
+              <button class="add-client-btn">
+                <i class="fa fa-plus lite-grey me-1"></i> Add Client
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 main-table g-scroll">
+          <table class="list-table">
+            <thead>
+              <tr>
+                <th>Institution Code</th>
+                <th>Institution Name</th>
+                <th>No Of Staff</th>
+                <th>No Of Exams</th>
+                <th>No Of Admins</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  #UPM <span class="ms-1 status-badge-success">Active</span>
+                </td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  #UPM <span class="ms-1 status-badge-failure">In-Active</span>
+                </td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  #UPM <span class="ms-1 status-badge-success">Active</span>
+                </td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#UPM</td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">University of Collage</span>
+                </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="text-center">
+                  <button type="button" class="manage-btn">Manage</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <!---------------------Main Section End----------------->
+    </section>
+    <script src="design.js"></script>
+  </body>
+</html>
