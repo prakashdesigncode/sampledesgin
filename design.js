@@ -34,20 +34,37 @@ header_buttons.forEach((button) => {
 });
 
 const handleNavigate = () => {
+  const loader = document.getElementById("loaders");
   const main_layout = document.getElementById("main-layout");
   const manage_layout = document.getElementById("manage-layout");
+  const basic_details = document.getElementById("basic-details");
+  loader.setAttribute(
+    "class",
+    "d-flex justify-content-center align-items-center w-100 d-block"
+  );
+
+  setTimeout(() => {
+    loader.setAttribute(
+      "class",
+      "d-flex justify-content-center align-items-center w-100 d-none"
+    );
+  }, 2000);
+  basic_details.style.display = "block";
   main_layout.style.display = "none";
   manage_layout.style.display = "block";
 };
 
 const handleBread = (value) => {
-  const static = ["basic-details", "features"];
-  static.forEach((e) => {
+  const manage_layout = document.querySelectorAll("main ul li a");
+  const static = ["basic-details", "features", "default-settings"];
+  static.forEach((e, index) => {
     const Element = document.getElementById(e);
     if (e === value) {
       Element.style.display = "block";
+      manage_layout[index + 1].style.color = "#41b9b4";
     } else {
       Element.style.display = "none";
+      manage_layout[index + 1].style.color = "#898989";
     }
   });
 };

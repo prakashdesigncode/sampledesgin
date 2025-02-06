@@ -43,6 +43,11 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="loaders" class="d-flex justify-content-center align-items-center w-100">
+      <div>
+        <div class="loader"></div>
+      </div>
+    </div>
     <section class="nav-bar d-flex justify-content-between flex-column position-relative">
       <div class="d-flex align-items-center mt-4 position-relative" style="overflow: hidden;">
         <img
@@ -374,11 +379,11 @@
           <li><a href=""><i class="bx bx-home-alt bx-tada-hover pe-1 pb-2"></i>Manage <i class='bx bx-chevron-right'></i></a></li>
           <li><a  id="bd" onclick="handleBread('basic-details')">Basic Details <i class='bx bx-chevron-right'></i></a></li>
           <li><a  id="f" onclick="handleBread('features')">Features <i class='bx bx-chevron-right'></i></a></li>
-          <li><a  id="ds" onclick="handleBread('')">Default settings</a></li>
+          <li><a  id="ds" onclick="handleBread('default-settings')">Default settings</a></li>
          </ul>
          <section>
          <div id="basic-details">
-            <label>Edit Basic Details </label>
+            <div class="text-secondary">Edit Basic Details </div>
             <div class="d-flex gap-3 flex-wrap mt-4">
               <div class="position-relative">
               <input class="basic-input" placeholder="Logo"/>
@@ -413,7 +418,30 @@
 
         <section>
           <div id="features">
-            <div class="text-secendory">Apply Features Details </div>
+            <div class="text-secondary">Apply Features Details </div>
+            <div class="d-flex gap-4 flex-wrap mt-5">
+              <div class="position-relative d-flex gap-2">
+              <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
+              <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
+             </div>
+             <div class="position-relative d-flex gap-2">
+              <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
+              <label class="lite-grey" for="checkbox2">video recording</label>
+              </div>
+              <div class="position-relative d-flex gap-2"">
+              <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
+              <label class="lite-grey" for="checkbox3">Auto proctoring</label>
+            </div>
+         </div>
+         <footer class="mt-5">
+           <button class="client-create-btn">Apply</button>
+         </footer>
+          </div>
+        </section>
+
+        <section>
+          <div id="default-settings">
+            <div class="text-secondary">Apply Default Settings</div>
             <div class="d-flex gap-4 flex-wrap mt-5">
               <div class="position-relative d-flex gap-2">
               <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
