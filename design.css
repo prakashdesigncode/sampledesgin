@@ -67,12 +67,14 @@ ul li {
   text-transform: uppercase;
   margin: 45px 0;
   position: relative;
+  cursor: pointer;
+
 }
 .main-menu,
 .logouy-menu {
   overflow: hidden;
 }
-.main-menu ul li:first-child::after {
+.active-menu:after {
   content: "";
   position: absolute;
   width: 4px;
@@ -186,6 +188,14 @@ strong {
   grid-template-rows: 10% 90%;
   padding: 0 25px 25px 25px;
 }
+.page{
+  display: none;
+}
+.page-view{
+  display: block;
+}
+
+
 
 .container .header {
   display: flex;
@@ -215,6 +225,11 @@ strong {
   color: #41b9b4;
 }
 
+.fa-filter,.fa-plus{
+color: #dad3d3;
+
+}
+
 .add-client-btn:hover .fa-filter,
 .add-client-btn:hover .fa-plus {
   animation-name: tada;
@@ -242,7 +257,7 @@ strong {
 .list-table tbody {
   color: #898989;
   height: 100px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 .list-table thead {
   top: 0px;
@@ -329,10 +344,13 @@ strong {
   height: 700px;
   scroll-behavior: smooth;
 }
+.g-scroll::-webkit-scrollbar-track-piece{
+  margin: 40px 0 0;
+}
 
 .g-scroll::-webkit-scrollbar {
   width: 7px;
-  background-color: #f4f8f9;
+  /* background-color: #f4f8f9; */
 }
 .g-scroll::-webkit-scrollbar-thumb {
   border-radius: 5px;
@@ -521,12 +539,20 @@ input[type="checkbox"]:checked + label::before {
 
 /* HTML: <div class="loader"></div> */
 #loaders {
-  /* display: none !important; */
-  position: absolute;
+  display: none;
   z-index: 300;
+  width: 100%;
   height: 100vh;
   background: #dad3d3;
   opacity: 0.4;
+  position: absolute;
+
+  
+}
+.inner-loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 .loader {
   width: 35px;

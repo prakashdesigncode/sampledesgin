@@ -33,25 +33,24 @@ header_buttons.forEach((button) => {
   });
 });
 
-const handleNavigate = () => {
+function handleLoaded(callback) {
   const loader = document.getElementById("loaders");
+  loader.style.display = "block";
+  setTimeout(() => {
+    loader.style.display = "none";
+    callback();
+  }, 2000);
+}
+
+const handleNavigate = () => {
   const main_layout = document.getElementById("main-layout");
   const manage_layout = document.getElementById("manage-layout");
   const basic_details = document.getElementById("basic-details");
-  loader.setAttribute(
-    "class",
-    "d-flex justify-content-center align-items-center w-100 d-block"
-  );
-
-  setTimeout(() => {
-    loader.setAttribute(
-      "class",
-      "d-flex justify-content-center align-items-center w-100 d-none"
-    );
-  }, 2000);
-  basic_details.style.display = "block";
-  main_layout.style.display = "none";
-  manage_layout.style.display = "block";
+  handleLoaded(() => {
+    basic_details.style.display = "block";
+    main_layout.style.display = "none";
+    manage_layout.style.display = "block";
+  });
 };
 
 const handleBread = (value) => {
@@ -68,3 +67,32 @@ const handleBread = (value) => {
     }
   });
 };
+
+const handleMenu = (value) => {
+  const element = document.querySelector(
+    `.main-menu ul li:nth-child(${value})`
+  );
+  const allElement = document.querySelectorAll(".main-menu ul li");
+  const pages = document.querySelectorAll(".page");
+  pages.forEach((e, index) => {
+    if (index + 1 === value) {
+      handleLoaded(() => {
+        e.style.display = "block";
+      });
+    } else e.style.display = "none";
+  });
+  allElement.forEach((e) => {
+    e.classList.remove("active-menu");
+    e.querySelector("i").style.color = "#dad3d3";
+    e.querySelector("i").classList.remove("bx-tada");
+  });
+
+  element.classList.add("active-menu");
+  element.querySelector("i").style.color = "#41b9b4";
+  element.querySelector("i").classList.add("bx-tada");
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const pages = document.querySelectorAll(".page");
+  pages[0].style.display = "block";
+});

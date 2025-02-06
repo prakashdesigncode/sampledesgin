@@ -43,8 +43,8 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="loaders" class="d-flex justify-content-center align-items-center w-100">
-      <div>
+    <div id="loaders" >
+      <div class="inner-loader">
         <div class="loader"></div>
       </div>
     </div>
@@ -62,13 +62,13 @@
       <i class="bx bxs-chevron-left bx-fade-left-hover" id="toggle-menu"></i>
       <div class="main-menu">
         <ul>
-          <li class="d-flex align-items-center bg-lite-green">
+          <li class="d-flex align-items-center active-menu bg-lite-green" onclick="handleMenu(1)">
             <i class="bx bx-home-alt bx-tada pe-4"></i
             ><span class="nav-link-custom">Dashboard</span>
           </li>
-          <li class="d-flex align-items-center"><i class='bx bx-edit-alt  pe-4' ></i></i><span class="nav-link-custom">Exams</span></li>
-          <li class="d-flex align-items-center"><i class='bx bx-spreadsheet  pe-4' ></i><span class="nav-link-custom">Sheduling</span></li>
-          <li class="d-flex align-items-center"><i class='bx bx-badge-check  pe-4' ></i><span class="nav-link-custom">Admin</span></li>
+          <li class="d-flex align-items-center" onclick="handleMenu(2)"><i class='bx bx-edit-alt   pe-4' ></i></i><span class="nav-link-custom">Exams</span></li>
+          <li class="d-flex align-items-center" onclick="handleMenu(3)"><i class='bx bx-spreadsheet  pe-4' ></i><span class="nav-link-custom">Sheduling</span></li>
+          <li class="d-flex align-items-center" onclick="handleMenu(4)"><i class='bx bx-badge-check  pe-4' ></i><span class="nav-link-custom">Admin</span></li>
         </ul>
       </div>
       <div class="logout-menu">
@@ -97,9 +97,9 @@
         </div>
       </header>
       <!---------------------Header End----------------------->
-
+      
       <!---------------------Main Section Start--------------->
-      <main class="main-layout" id="main-layout">
+      <main class="main-layout page" id="main-layout">
         <div class="table-header pe-3 d-flex justify-content-between py-2">
           <div class="search-input my-1">
             <i class="bx bx-search-alt bx-burst"></i>
@@ -146,7 +146,7 @@
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
                   />
                   <span class="ms-3">University of Collage</span>
-                </td>
+                  table </td>
                 <td>5</td>
                 <td>45</td>
                 <td>10</td>
@@ -463,6 +463,11 @@
         </section>
       </main>
       <!---------------------Manage Section End--------------->
+
+      <main id="2" class="page">Exams</main>
+      <main id="3" class="page">Sheduling</main>
+      <main id="4" class="page">Admin</main>
+
 
       <!---------------------Popup Start---------------------->
        <!-- <section id="add-client-popup" class="d-flex flex-column justify-content-around px-4"> 
