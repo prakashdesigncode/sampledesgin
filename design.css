@@ -8,6 +8,8 @@
   font-family: "Poppins", serif;
   font-weight: 600;
   font-style: normal;
+  /* background-color: red; */
+  
 }
 
 .user-type {
@@ -666,6 +668,12 @@ input[type="checkbox"]:checked + label::before {
   z-index: 2;
 }
 
+.tab-content{
+  height: 800px;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
 .tab-content .tab-pane {
   display: none;
 }
@@ -673,17 +681,22 @@ input[type="checkbox"]:checked + label::before {
 .tab-content .tab-pane.active {
   display: block;
 }
+.label-manage-table{
+  /* border: none !important; */
+}
+.label-manage-table tbody, td, tfoot, th, thead, tr{
+  border-style: none !important;
+}
 
-/* #exampleFormControlInput1 {
-  width: 600px;
-} */
-/* #basic{
-  width: 50%;
-} */
+.label-manage-table tbody tr td input{
+  border: none !important;
+  outline:none ;
+  border-bottom :2px solid #dad3d3 !important;
+  margin: 7px 0;
+}
 
-/* @media only screen  and (max-width:600px){
-  .tabs button {
-    display:  flex;
-  }
-} */
+.bx-transfer{
+  font-size: 20px;
+  color:#dad3d3;
+}
 

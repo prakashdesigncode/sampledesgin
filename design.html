@@ -101,7 +101,7 @@
       <!---------------------Header End----------------------->
       
       <!---------------------Main Section Start--------------->
-      <main class="main-layout page" id="main-layout" >
+      <main class="main-layout page" id="main-layout" style="display: none;" >
         <div class="table-header pe-3 d-flex justify-content-between py-2">
           <div class="search-input my-1">
             <i class="bx bx-search-alt bx-burst"></i>
@@ -470,30 +470,36 @@
           <button id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button">Basic Details</button>
           <button id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" aria-selected="true">Features</button>
           <button id="default-settings-tab" data-bs-toggle="tab" data-bs-target="#default-settings" type="button">Default Settings</button>
+          <button id="label-management-tab" data-bs-toggle="tab" data-bs-target="#label-management" type="button">Label Management</button>
         </div>
         
-        <div class="tab-content">
+        <div class="tab-content g-scroll">
           <div id="basic" class="tab-pane " role="tabpanel" aria-labelledby="basic-tab">
             <div class="d-flex card px-5 pt-5 pb-4 mt-3">
             <div class="mb-3">
-              <span for="exampleFormControlInput1" class="form-label">Client Logo</span>
+              <span for="exampleFormControlInput1" class="form-label text-secondary">Client Logo</span>
               <input type="file" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Logo">
             </div>
             <div class="mb-3">
-              <span for="exampleFormControlInput1" class="form-label">Client Name</span>
+              <span for="exampleFormControlInput1" class="form-label text-secondary">Client Name</span>
               <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Client Name">
             </div>
             <div class="mb-3">
-              <span for="exampleFormControlInput1" class="form-label">Client Code</span>
+              <span for="exampleFormControlInput1" class="form-label text-secondary">Client Code</span>
               <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Client Code">
             </div>
             <div class="mb-3">
-              <span for="exampleFormControlInput1" class="form-label">Admins</span>
-              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admins">
+              <span for="exampleFormControlInput1" class="form-label text-secondary">Admin</span>
+              <div class="d-flex align-items-center gap-3">
+                <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Code">
+                <i class='bx bx-transfer'></i>
+              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin mail">
             </div>
-            <div class="mb-3">
-              <span for="exampleFormControlInput1" class="form-label">Admin Code</span>
+            <div class="d-flex align-items-center gap-3 mt-2">
               <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Code">
+              <i class='bx bx-transfer'></i>
+            <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin mail">
+          </div>
             </div>
             <footer class=" text-end mt-1">
               <button class="client-create-btn">Apply</button>
@@ -509,13 +515,17 @@
               <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
              </div>
              <div class="position-relative d-flex gap-2">
+              <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
+              <label class="lite-grey" for="checkbox">enable Heba Item Creation</label>
+             </div>
+             <div class="position-relative d-flex gap-2">
               <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
-              <label class="lite-grey" for="checkbox2">video recording</label>
+              <label class="lite-grey" for="checkbox2">Max Users</label>
               </div>
-              <div class="position-relative d-flex gap-2"">
-              <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
-              <label class="lite-grey" for="checkbox3">Auto proctoring</label>
-              </div>
+              <div class="position-relative d-flex gap-2">
+                <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
+                <label class="lite-grey" for="checkbox">Reduce Time</label>
+               </div>
             </div>
             <footer class=" text-end mt-2">
               <button class="client-create-btn">Apply</button>
@@ -529,28 +539,124 @@
               <div class="d-flex gap-4 flex-wrap mt-5">
                 <div class="position-relative d-flex gap-2">
                 <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
-                <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
+                <label class="lite-grey" for="checkbox">Auto Start</label>
                </div>
                <div class="position-relative d-flex gap-2">
                 <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
-                <label class="lite-grey" for="checkbox2">video recording</label>
+                <label class="lite-grey" for="checkbox2">Manual Start</label>
                 </div>
                 <div class="position-relative d-flex gap-2"">
                 <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
                 <label class="lite-grey" for="checkbox3">Auto proctoring</label>
               </div>
-             
+              <div class="position-relative d-flex gap-2">
+                <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
+                <label class="lite-grey" for="checkbox2">Set Configuration File</label>
+                </div>
+                <div class="position-relative d-flex gap-2"">
+                <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
+                <label class="lite-grey" for="checkbox3">Set File</label>
+              </div>
             </div>
             <footer class=" text-end mt-2">
               <button class="client-create-btn">Apply</button>
             </footer>
           </div>
         </div>
-        
+        <div id="label-management" class="tab-pane  ">
+          <div class="d-flex gap-3 flex-wrap mt-4">
+          <div class="mb-2">
+          <h6 class="text-secondary mb-3">1. Category One</h6>
+           <div class="card px-4 py-3 ">
+            <div class="card-body">
+              <table class="table text-center label-manage-table">
+                <thead>
+                  <tr>
+                    <th class="text-secondary">English Language</th>
+                    <th></th>
+                    <th class="text-secondary">Arabic Language</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+           </div>
+          </div>
+          <div class="mb-2">
+           <h6 class="text-secondary mb-3">2. Category Two</h6>
+           <div class="card px-4 py-3 ">
+            <div class="card-body">
+              <table class="table text-center label-manage-table">
+                <thead>
+                  <tr>
+                    <th class="text-secondary">Arabic Language</th>
+                    <th></th>
+                    <th class="text-secondary">English Language</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text"></td>
+                    <td><i class='bx bx-transfer'></i></td>
+                    <td><input type="text"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+           </div>
+          </div>
+        </div>
+        </div>  
     </section>
       <!---------------------Manage Section End--------------->
 
-      <main id="2" class="page">Exams</main>
+      <main id="2" class="page">Exams</main>  
       <main id="3" class="page">Sheduling</main>
       <main id="4" class="page">Admin</main>
       
