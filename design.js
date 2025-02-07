@@ -47,7 +47,7 @@ const handleNavigate = () => {
   const manage_layout = document.getElementById("manage-layout");
   const basic_details = document.getElementById("basic-details");
   handleLoaded(() => {
-    basic_details.style.display = "block";
+    // basic_details.style.display = "block";
     main_layout.style.display = "none";
     manage_layout.style.display = "block";
   });
@@ -96,3 +96,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const pages = document.querySelectorAll(".page");
   pages[0].style.display = "block";
 });
+
+window.addEventListener("click", (event) => {
+  const popup = document.getElementById("add-client-popup");
+  if (event.target === popup) popup.classList.remove("visible");
+});
+
+const openAddClient = () => {
+  const add_client = document.getElementById("add-client-popup");
+  add_client.classList.toggle("visible");
+};
+
+/*tabs*/
+
+const tabsOptions = document.querySelectorAll(".tabs button");
+const activeStatus = document.querySelector(".tabs .active");
+const tabContents = document.querySelectorAll(".tab-content .tab-pane");
+
+const setActiveTab = (index) => {
+  const selectedTab = tabsOptions[index];
+  const tabRect = selectedTab.getBoundingClientRect();
+  activeStatus.style.left = `${
+    tabRect.left - selectedTab.parentElement.getBoundingClientRect().left
+  }px`;
+  activeStatus.style.width = `${tabRect.width}px`;
+  tabContents.forEach((content) => content.classList.remove("active"));
+  const targetTab = document.querySelector(
+    selectedTab.getAttribute("data-bs-target")
+  );
+  targetTab.classList.add("active");
+  tabsOptions[index].style.color = "#41b9b4";
+};
+
+setActiveTab(0);
+
+for (let i = 0; i < tabsOptions.length; i++) {
+  tabsOptions[i].onclick = () => {
+    setActiveTab(i);
+    tabsOptions.forEach((btn) => (btn.style.color = "#898989"));
+    tabsOptions[i].style.color = "#41b9b4";
+  };
+}
