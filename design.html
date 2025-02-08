@@ -36,6 +36,11 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/cropperjs@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.12/sass.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
@@ -51,6 +56,7 @@
       </div>
     </div>
     <section class="nav-bar d-flex justify-content-between flex-column position-relative">
+      <div class="d-flex gap-3 flex-column">
       <div class="d-flex align-items-center mt-4 position-relative" style="overflow: hidden;">
         <img
           class="admin-image ms-3"
@@ -61,11 +67,11 @@
         />
         <div class="topic ms-3 text-uppercase">Clients Management</div>
       </div>
-      <i class="bx bxs-chevron-left bx-fade-left-hover" id="toggle-menu"></i>
+      <i class="bx bxs-chevron-left" id="toggle-menu"></i>
       <div class="main-menu">
         <ul>
           <li class="d-flex align-items-center active-menu bg-lite-green" onclick="handleMenu(1)">
-            <i class="bx bx-home-alt bx-tada pe-4"></i
+            <i class="bx bx-home-alt pe-4"></i
             ><span class="nav-link-custom">Dashboard</span>
           </li>
           <li class="d-flex align-items-center" onclick="handleMenu(2)"><i class='bx bx-edit-alt   pe-4' ></i></i><span class="nav-link-custom">Exams</span></li>
@@ -73,6 +79,7 @@
           <li class="d-flex align-items-center" onclick="handleMenu(4)"><i class='bx bx-badge-check  pe-4' ></i><span class="nav-link-custom">Admin</span></li>
         </ul>
       </div>
+    </div>
       <div class="logout-menu">
         <ul>
           <li class="d-flex align-items-center"><i class='bx bx-log-out-circle pe-4' ></i><span class="nav-link-custom">Logout</span></li>
@@ -81,13 +88,10 @@
     </section>
     <section class="main-container">
       <!---------------------Header Start--------------------->
-      <header class="header d-flex justify-content-end align-items-center">
-        <!-- <div>
-         <div class="user-type">Clients</div>
-         <div class="user-type">All Information</div> 
-        </div> -->
+      <header class="header d-flex justify-content-between align-items-center">
+        <div class="text-secondary ms-3" id="colleage-title"></div>
         <div class="d-flex align-items-center gap-2">
-          <i class="bx bxs-bell-ring bx-tada me-4"></i>
+          <i class="bx bxs-bell-ring me-4"></i>
           <img
             class="admin-image"
             alt="admin"
@@ -106,7 +110,7 @@
           <div class="search-input my-1">
             <i class="bx bx-search-alt bx-burst"></i>
             <input type="text" class="search ms-3" placeholder="Search..." />
-            <i class="bx bx-x bx-tada-hover"></i>
+            <i class="bx bx-x "></i>
           </div>
           <div class="d-flex gap-3 align-items-center">
             <div>
@@ -376,99 +380,11 @@
       <!---------------------Main Section End----------------->
 
       <!---------------------Manage Section Start-------------> 
-      <!-- <main class="manage-layout" id="manage-layout">
-         <ul>
-          <li><a href=""><i class="bx bx-home-alt bx-tada-hover pe-1 pb-2"></i>Manage <i class='bx bx-chevron-right'></i></a></li>
-          <li><a  id="bd" onclick="handleBread('basic-details')">Basic Details <i class='bx bx-chevron-right'></i></a></li>
-          <li><a  id="f" onclick="handleBread('features')">Features <i class='bx bx-chevron-right'></i></a></li>
-          <li><a  id="ds" onclick="handleBread('default-settings')">Default settings</a></li>
-         </ul>
-         <section>
-         <div id="basic-details">
-            <div class="text-secondary">Edit Basic Details </div>
-            <div class="d-flex gap-3 flex-wrap mt-4">
-              <div class="position-relative">
-              <input class="basic-input" placeholder="Logo"/>
-              <i class='bx bx-check bx-check-rounded pe-4'></i>
-              <i class='bx bx-x text-danger' ></i>
-             </div>
-             <div class="position-relative">
-              <input class="basic-input" placeholder="Client Code"/>
-              <i class='bx bx-check bx-check-rounded pe-4'></i>
-              <i class='bx bx-x text-danger' ></i>
-              </div>
-              <div class="position-relative">
-              <input class="basic-input" placeholder="Client Name"/>
-              <i class='bx bx-check bx-check-rounded pe-4'></i>
-              <i class='bx bx-x text-danger' ></i>
-            </div>
-            <div class="position-relative">
-              <input class="basic-input" placeholder="Admin"/>
-              <i class='bx bx-check bx-check-rounded pe-4'></i>
-              <i class='bx bx-x text-danger' ></i>
-            </div>
-            <div class="position-relative">
-              <input class="basic-input" placeholder="Admin Code"/>
-              <i class='bx bx-check bx-check-rounded pe-4'></i>
-              <i class='bx bx-x text-danger' ></i>
-            </div>
-         </div>
-         <footer class="mt-5">
-           <button class="client-create-btn">Save</button>
-         </footer>
-        </section>
-
-        <section>
-          <div id="features">
-            <div class="text-secondary">Apply Features Details </div>
-            <div class="d-flex gap-4 flex-wrap mt-5">
-              <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
-              <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
-             </div>
-             <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
-              <label class="lite-grey" for="checkbox2">video recording</label>
-              </div>
-              <div class="position-relative d-flex gap-2"">
-              <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
-              <label class="lite-grey" for="checkbox3">Auto proctoring</label>
-            </div>
-         </div>
-         <footer class="mt-5">
-           <button class="client-create-btn">Apply</button>
-         </footer>
-          </div>
-        </section>
-
-        <section>
-          <div id="default-settings">
-            <div class="text-secondary">Apply Default Settings</div>
-            <div class="d-flex gap-4 flex-wrap mt-5">
-              <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
-              <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
-             </div>
-             <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
-              <label class="lite-grey" for="checkbox2">video recording</label>
-              </div>
-              <div class="position-relative d-flex gap-2"">
-              <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
-              <label class="lite-grey" for="checkbox3">Auto proctoring</label>
-            </div>
-         </div>
-         <footer class="mt-5">
-           <button class="client-create-btn">Apply</button>
-         </footer>
-          </div>
-        </section>
-      </main> -->
       <section class="manage-layout" id="manage-layout">
         <div class="tabs">
           <div class="active"></div>
           <button id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button">Basic Details</button>
-          <button id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" aria-selected="true">Features</button>
+          <button id="features-tab" data- bs-toggle="tab" data-bs-target="#features" type="button" aria-selected="true">Features</button>
           <button id="default-settings-tab" data-bs-toggle="tab" data-bs-target="#default-settings" type="button">Default Settings</button>
           <button id="label-management-tab" data-bs-toggle="tab" data-bs-target="#label-management" type="button">Label Management</button>
         </div>
@@ -478,7 +394,7 @@
             <div class="d-flex card px-5 pt-5 pb-4 mt-3">
             <div class="mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Client Logo</span>
-              <input type="file" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Logo">
+              <input type="file" class="form-control mt-1" id="client-logo" placeholder="Logo">
             </div>
             <div class="mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Client Name</span>
@@ -489,16 +405,21 @@
               <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Client Code">
             </div>
             <div class="mb-3">
-              <span for="exampleFormControlInput1" class="form-label text-secondary">Admin</span>
+              <div for="exampleFormControlInput1" class="form-label text-secondary">Client Themes</div>
+              <input type="color" class=" mt-1" id="exampleFormControlInput1" placeholder="Client Code">
+            </div>
+            <div class="mb-2">
+              <div class="d-flex justify-content-between mb-3">
+              <span for="exampleFormControlInput1" class="form-label text-secondary">Admins</span>
+              <button class="client-create-btn">Add Admin <i class="fa fa-plus text-white ps-1"></i></button>
+            </div>
               <div class="d-flex align-items-center gap-3">
-                <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Code">
-                <i class='bx bx-transfer'></i>
-              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin mail">
+                <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Mail">
+              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Code">
             </div>
             <div class="d-flex align-items-center gap-3 mt-2">
-              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Code">
-              <i class='bx bx-transfer'></i>
-            <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin mail">
+              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Mail">
+            <input type="email" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Admin Code">
           </div>
             </div>
             <footer class=" text-end mt-1">
@@ -509,7 +430,7 @@
           <div id="features" class="tab-pane" role="tabpanel" aria-labelledby="features-tab">
             <div class="card mt-3 pt-5 pb-4 px-5">
             <div class="text-secondary">Apply Features Details </div>
-            <div class="d-flex gap-4 flex-wrap mt-5">
+            <div class="d-flex gap-4 flex-column flex-wrap mt-4">
               <div class="position-relative d-flex gap-2">
               <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
               <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
@@ -518,144 +439,88 @@
               <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
               <label class="lite-grey" for="checkbox">enable Heba Item Creation</label>
              </div>
-             <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
-              <label class="lite-grey" for="checkbox2">Max Users</label>
+             <div class="text-secondary">Set Max Count</div>
+             <div class="position-relative d-flex align-items-center gap-2 mx-2">
+             
+              <div class="lite-grey" for="checkbox2">1. <span class="mx-2">Max Users</span></div>
+              <input class="number-input mx-2" type="text" id="checkbox2"  placeholder=""/>
               </div>
-              <div class="position-relative d-flex gap-2">
-                <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
-                <label class="lite-grey" for="checkbox">Reduce Time</label>
-               </div>
+              <div class="position-relative d-flex align-items-center gap-2 mx-2">
+                <div class="lite-grey" for="checkbox2">2. <span class="mx-2">Max Exams</span></div>
+                <input class="number-input" type="text" id="checkbox2"  placeholder=""/>
+                </div>
             </div>
             <footer class=" text-end mt-2">
               <button class="client-create-btn">Apply</button>
-            </footer>
+            </footer> 
           </div>
          
           </div>
           <div id="default-settings" class="tab-pane" role="tabpanel" aria-labelledby="default-settings-tab">
             <div class="card mt-3 pt-5 pb-4 px-5">
-              <div class="text-secondary">Apply Default Settings </div>
-              <div class="d-flex gap-4 flex-wrap mt-5">
-                <div class="position-relative d-flex gap-2">
-                <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
-                <label class="lite-grey" for="checkbox">Auto Start</label>
+              <div class="text-secondary">Exam Settings </div>
+              <div class="d-flex gap-4 flex-column flex-wrap mt-3">
+                <div class="position-relative d-flex flex-column gap-2">
+                  <div class="text-secondary mb-1">Exam Start</div>
+                  <div class="d-flex gap-3">
+                  <div class="d-flex gap-3">
+                <input type="radio" id="checkbox" name="start" placeholder="Logo"/>
+                <div class="lite-grey" for="checkbox">Auto Start</div>
+              </div>
+              <div class="d-flex gap-3">
+                <input type="radio" id="checkbox" name="start" placeholder="Logo"/>
+                <div class="lite-grey" for="checkbox">Manual Start</div>
+              </div>
+            </div>
                </div>
-               <div class="position-relative d-flex gap-2">
-                <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
-                <label class="lite-grey" for="checkbox2">Manual Start</label>
-                </div>
-                <div class="position-relative d-flex gap-2"">
+                <div class="position-relative d-flex gap-2">
                 <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
-                <label class="lite-grey" for="checkbox3">Auto proctoring</label>
+                <label class="lite-grey" for="checkbox3">Allow Exam Taker Without Registration (only with Email Id)</label>
               </div>
               <div class="position-relative d-flex gap-2">
-                <input class="basic-input-check" type="checkbox" id="checkbox2"  placeholder="Client Code"/>
-                <label class="lite-grey" for="checkbox2">Set Configuration File</label>
-                </div>
-                <div class="position-relative d-flex gap-2"">
                 <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
-                <label class="lite-grey" for="checkbox3">Set File</label>
+                <label class="lite-grey" for="checkbox3">On Late Start Provides Full Time To Canditate.</label>
+              </div>
+              <div class="text-secondary">Attach Files</div>
+              <div class="position-relative d-flex gap-2 mx-2">
+                <div class="lite-grey d-flex align-items-center" for="checkbox2">1. <span class="mx-3">Seb Configuration File</span></div>
+                <div for="checkbox3" class="custom-file-label lite-grey" id="file-label">Upload</div>
+                <input class="basic-input-check" type="file" id="checkbox3" placeholder="Client Name" onchange="updateLabel()" />
+                </div>
+                <div class="position-relative d-flex gap-2 mx-2">
+                  <div class="lite-grey d-flex align-items-center" for="checkbox2">2. <span class="mx-3">Seb File</span></div>
+                  <div for="checkbox3" class="custom-file-label lite-grey" id="file-label">Upload Equal</div>
+                  <input class="basic-input-check" type="file" id="checkbox3" placeholder="Client Name" onchange="updateLabel()" />
               </div>
             </div>
             <footer class=" text-end mt-2">
-              <button class="client-create-btn">Apply</button>
+              <button class="client-create-btn">Apply</button>  
             </footer>
           </div>
         </div>
-        <div id="label-management" class="tab-pane  ">
-          <div class="d-flex gap-3 flex-wrap mt-4">
-          <div class="mb-2">
-          <h6 class="text-secondary mb-3">1. Category One</h6>
-           <div class="card px-4 py-3 ">
-            <div class="card-body">
-              <table class="table text-center label-manage-table">
-                <thead>
-                  <tr>
-                    <th class="text-secondary">English Language</th>
-                    <th></th>
-                    <th class="text-secondary">Arabic Language</th>
-                  </tr>
-                </thead>
-                <tbody >
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                </tbody>
-              </table>
+        <div id="label-management" class="tab-pane px-3 py-4 ">
+           <div class="text-end"><button class="client-create-btn">New</button></div>
+           <div class="d-flex flex-wrap gap-3">
+            <div class="card rounded border-none" style="width: 23rem;">
+              <div class="card-body ">
+                <div class=" card-title text-secondary text-center bg-white">Default (En)</div>
+                <div class="text-secondary my-3 pt-2">English Language</div>
+                <div class="bg-white text-end"> <button class="client-create-btn">Activate</button>  </div>
+              </div>
+             
+            </div>
+            <div class="card rounded" style="width: 23rem;">
+              <div class="card-body">
+                <div class=" card-title text-secondary text-center bg-white">Default (Ab)</div>
+                <div class="text-secondary my-3 pt-2">Arabic Language</div>
+                <div class="bg-white text-end"> <button class="client-create-btn">Activate</button>  </div>
+              </div>
+             
             </div>
            </div>
-          </div>
-          <div class="mb-2">
-           <h6 class="text-secondary mb-3">2. Category Two</h6>
-           <div class="card px-4 py-3 ">
-            <div class="card-body">
-              <table class="table text-center label-manage-table">
-                <thead>
-                  <tr>
-                    <th class="text-secondary">Arabic Language</th>
-                    <th></th>
-                    <th class="text-secondary">English Language</th>
-                  </tr>
-                </thead>
-                <tbody >
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><i class='bx bx-transfer'></i></td>
-                    <td><input type="text"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-           </div>
-          </div>
-        </div>
         </div>  
     </section>
       <!---------------------Manage Section End--------------->
-
       <main id="2" class="page">Exams</main>  
       <main id="3" class="page">Sheduling</main>
       <main id="4" class="page">Admin</main>
@@ -683,5 +548,6 @@
      </section>
     <!---------------------Popup End------------------------>
     <script src="design.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
   </body>
 </html>

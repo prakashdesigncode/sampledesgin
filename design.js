@@ -1,111 +1,118 @@
-const open_menu = document.getElementById("toggle-menu");
-const nav_bar = document.querySelector(".nav-bar");
-const topic = document.querySelector(".topic");
-const nav_link = document.querySelectorAll(".nav-link-custom");
+//Open Menu Toggle
+$("#toggle-menu").on("click", function () {
+  const $openMenu = $(this);
+  const $navBar = $(".nav-bar");
+  const $topic = $(".topic");
+  const $navLink = $(".nav-link-custom");
 
-open_menu.onclick = () => {
-  const value = open_menu.className;
-  const condition = value.includes("left");
-  nav_bar.style.width = condition ? "4%" : "15%";
-  topic.style.visibility = condition ? "hidden" : "visible";
-  nav_link.forEach((Element) => {
-    Element.style.display = condition ? "none" : "block";
-  });
-  open_menu.className = condition
-    ? open_menu.className.replaceAll("left", "right")
-    : open_menu.className.replaceAll("right", "left");
-};
-
-const header_buttons = document.querySelectorAll(".add-client-btn");
-
-header_buttons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    let x = event.clientX - event.target.offsetLeft;
-    let y = event.clientY - event.target.offsetTop;
-    let ripples = document.createElement("span");
-    ripples.classList.add("button-upper-hover");
-    ripples.style.left = x + "px";
-    ripples.style.top = y + "px";
-    button.appendChild(ripples);
-    setTimeout(() => {
-      ripples.remove();
-    }, 1000);
-  });
+  const condition = $openMenu.hasClass("left");
+  $navBar.css("width", condition ? "4%" : "15%");
+  $topic.css("visibility", condition ? "hidden" : "visible");
+  $navLink.css("display", condition ? "none" : "block");
+  $openMenu.removeClass("left right").addClass(condition ? "right" : "left");
+  if (condition) {
+    $openMenu.removeClass("bxs-chevron-left").addClass("bxs-chevron-right");
+  } else {
+    $openMenu.removeClass("bxs-chevron-right").addClass("bxs-chevron-left");
+  }
 });
 
+//Ripple Effect on Button Clicks
+$(".add-client-btn").on("click", function (event) {
+  const $button = $(this);
+  const x = event.clientX - $button.offset().left;
+  const y = event.clientY - $button.offset().top;
+
+  const $ripples = $("<span>")
+    .addClass("button-upper-hover")
+    .css({ left: x, top: y });
+
+  $button.append($ripples);
+  setTimeout(() => $ripples.remove(), 1000);
+});
+
+/*-----------------functions Start-------------------------*/
 function handleLoaded(callback) {
-  const loader = document.getElementById("loaders");
-  loader.style.display = "block";
-  setTimeout(() => {
-    loader.style.display = "none";
+  const $loader = $("#loaders");
+  $loader.show();
+
+  setTimeout(function () {
+    $loader.hide();
     callback();
-  }, 2000);
+  }, 500);
 }
 
 const handleNavigate = () => {
-  const main_layout = document.getElementById("main-layout");
-  const manage_layout = document.getElementById("manage-layout");
-  const basic_details = document.getElementById("basic-details");
+  const $mainLayout = $("#main-layout");
+  const $manageLayout = $("#manage-layout");
+  const $title = $("#colleage-title");
+
   handleLoaded(() => {
-    // basic_details.style.display = "block";
-    main_layout.style.display = "none";
-    manage_layout.style.display = "block";
+    $title.text("UPM COLLAGE Of UNIVERSTY");
+    $mainLayout.hide();
+    $manageLayout.show();
   });
 };
 
 const handleBread = (value) => {
-  const manage_layout = document.querySelectorAll("main ul li a");
-  const static = ["basic-details", "features", "default-settings"];
-  static.forEach((e, index) => {
-    const Element = document.getElementById(e);
+  const $manageLayout = $("main ul li a");
+  const staticValues = ["basic-details", "features", "default-settings"];
+
+  staticValues.forEach((e, index) => {
+    const $element = $("#" + e);
+    const $link = $manageLayout.eq(index + 1);
+
     if (e === value) {
-      Element.style.display = "block";
-      manage_layout[index + 1].style.color = "#41b9b4";
+      $element.show();
+      $link.css("color", "#41b9b4");
     } else {
-      Element.style.display = "none";
-      manage_layout[index + 1].style.color = "#898989";
+      $element.hide();
+      $link.css("color", "#898989");
     }
   });
 };
 
 const handleMenu = (value) => {
-  const element = document.querySelector(
-    `.main-menu ul li:nth-child(${value})`
-  );
-  const allElement = document.querySelectorAll(".main-menu ul li");
-  const pages = document.querySelectorAll(".page");
-  pages.forEach((e, index) => {
-    if (index + 1 === value) {
-      handleLoaded(() => {
-        e.style.display = "block";
-      });
-    } else e.style.display = "none";
-  });
-  allElement.forEach((e) => {
-    e.classList.remove("active-menu");
-    e.querySelector("i").style.color = "#dad3d3";
-    e.querySelector("i").classList.remove("bx-tada");
+  const $element = $(".main-menu ul li:nth-child(" + value + ")");
+  const $allElement = $(".main-menu ul li");
+  const $pages = $(".page");
+
+  $pages.each(function (index) {
+    $(this).toggle(index + 1 === value);
   });
 
-  element.classList.add("active-menu");
-  element.querySelector("i").style.color = "#41b9b4";
-  element.querySelector("i").classList.add("bx-tada");
+  $allElement.removeClass("active-menu").find("i").css("color", "#dad3d3");
+
+  $element.addClass("active-menu").find("i").css("color", "#41b9b4");
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  const pages = document.querySelectorAll(".page");
-  pages[0].style.display = "block";
-});
-
-window.addEventListener("click", (event) => {
-  const popup = document.getElementById("add-client-popup");
-  if (event.target === popup) popup.classList.remove("visible");
-});
 
 const openAddClient = () => {
-  const add_client = document.getElementById("add-client-popup");
-  add_client.classList.toggle("visible");
+  $("#add-client-popup").toggleClass("visible");
 };
+
+function updateLabel() {
+  const $input = $("#checkbox3");
+  const $label = $("#file-label");
+  const fileName = $input[0].files[0]
+    ? $input[0].files[0].name
+    : "No file selected";
+  $label.text(fileName);
+}
+
+/*-----------------functions Start-------------------------*/
+
+// Document Ready
+$(document).ready(function () {
+  $(".page").first().show();
+});
+
+//Close Popup when Clicking Outside
+$(window).on("click", function (event) {
+  const $popup = $("#add-client-popup");
+  if ($(event.target).is($popup)) {
+    $popup.removeClass("visible");
+  }
+});
 
 /*tabs*/
 
@@ -119,7 +126,7 @@ const setActiveTab = (index) => {
   activeStatus.style.left = `${
     tabRect.left - selectedTab.parentElement.getBoundingClientRect().left
   }px`;
-  activeStatus.style.width = `${tabRect.width}px`;
+  // activeStatus.style.width = `${tabRect.width}px`;
   tabContents.forEach((content) => content.classList.remove("active"));
   const targetTab = document.querySelector(
     selectedTab.getAttribute("data-bs-target")
@@ -137,3 +144,5 @@ for (let i = 0; i < tabsOptions.length; i++) {
     tabsOptions[i].style.color = "#41b9b4";
   };
 }
+
+//crop image
