@@ -76,7 +76,11 @@ const handleMenu = (value) => {
   const $element = $(".main-menu ul li:nth-child(" + value + ")");
   const $allElement = $(".main-menu ul li");
   const $pages = $(".page");
+  const $title = $("#colleage-title");
+  const $manageLayout = $("#manage-layout");
 
+  $title.text("");
+  $manageLayout.hide();
   $pages.each(function (index) {
     $(this).toggle(index + 1 === value);
   });
@@ -146,3 +150,12 @@ for (let i = 0; i < tabsOptions.length; i++) {
 }
 
 //crop image
+
+$("#client-logo").on("change", (e) => {
+  const file = e.target.files[0];
+  const fileRender = new FileReader();
+  fileRender.onload = function (e) {
+    $("#logo").attr("src", e.target.result).addClass("profile-image");
+  };
+  fileRender.readAsDataURL(file);
+});

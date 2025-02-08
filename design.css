@@ -669,13 +669,8 @@ input[type="file"].basic-input-check {
 
 
 
-#image-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 20px auto;
-}
-#cropped-image {
-  margin-top: 20px;
-  width: 100%;
-  max-width: 500px;
+.profile-image{
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
 }

@@ -392,10 +392,14 @@
         <div class="tab-content g-scroll">
           <div id="basic" class="tab-pane " role="tabpanel" aria-labelledby="basic-tab">
             <div class="d-flex card px-5 pt-5 pb-4 mt-3">
-            <div class="mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Client Logo</span>
-              <input type="file" class="form-control mt-1" id="client-logo" placeholder="Logo">
-            </div>
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" id="client-logo" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text bg-white"><img id="logo" alt="image"/></span>
+                </div>
+              </div>
+           
             <div class="mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Client Name</span>
               <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Client Name">
@@ -436,8 +440,8 @@
               <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
              </div>
              <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
-              <label class="lite-grey" for="checkbox">enable Heba Item Creation</label>
+              <input class="basic-input-check" type="checkbox" id="checkbox1" placeholder="Logo"/>
+              <label class="lite-grey" for="checkbox1">enable Heba Item Creation</label>
              </div>
              <div class="text-secondary">Set Max Count</div>
              <div class="position-relative d-flex align-items-center gap-2 mx-2">
@@ -478,19 +482,19 @@
                 <label class="lite-grey" for="checkbox3">Allow Exam Taker Without Registration (only with Email Id)</label>
               </div>
               <div class="position-relative d-flex gap-2">
-                <input class="basic-input-check" type="checkbox" id="checkbox3"  placeholder="Client Name"/>
-                <label class="lite-grey" for="checkbox3">On Late Start Provides Full Time To Canditate.</label>
+                <input class="basic-input-check" type="checkbox" id="checkbox4"  placeholder="Client Name"/>
+                <label class="lite-grey" for="checkbox4">On Late Start Provides Full Time To Canditate.</label>
               </div>
               <div class="text-secondary">Attach Files</div>
               <div class="position-relative d-flex gap-2 mx-2">
                 <div class="lite-grey d-flex align-items-center" for="checkbox2">1. <span class="mx-3">Seb Configuration File</span></div>
                 <div for="checkbox3" class="custom-file-label lite-grey" id="file-label">Upload</div>
-                <input class="basic-input-check" type="file" id="checkbox3" placeholder="Client Name" onchange="updateLabel()" />
+                <input class="basic-input-check" type="file" id="checkbox3" placeholder="Client Name" onclick="updateLabel()" />
                 </div>
                 <div class="position-relative d-flex gap-2 mx-2">
                   <div class="lite-grey d-flex align-items-center" for="checkbox2">2. <span class="mx-3">Seb File</span></div>
                   <div for="checkbox3" class="custom-file-label lite-grey" id="file-label">Upload Equal</div>
-                  <input class="basic-input-check" type="file" id="checkbox3" placeholder="Client Name" onchange="updateLabel()" />
+                  <input class="basic-input-check" type="file" id="checkbox3" placeholder="Client Name" onclick="updateLabel()" />
               </div>
             </div>
             <footer class=" text-end mt-2">
