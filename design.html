@@ -36,11 +36,11 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/cropperjs@next"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.12/sass.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
@@ -119,7 +119,7 @@
               </button>
             </div>
             <div>
-              <button class="add-client-btn" onclick="openAddClient()">
+              <button class="add-client-btn" onclick="openAddClient('#add-client-popup')">
                 <i class="fa fa-plus lite-grey me-1"></i> Add Client
               </button>
             </div>
@@ -399,7 +399,6 @@
                   <span class="input-group-text bg-white"><img id="logo" alt="image"/></span>
                 </div>
               </div>
-           
             <div class="mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Client Name</span>
               <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Client Name">
@@ -545,10 +544,21 @@
           </div>       
       </div>
       <footer class="text-end">
-        <button class=" mb-4 mt-4 me-2 outline-btn" onclick="openAddClient()">Cancel</button>
+        <button class=" mb-4 mt-4 me-2 outline-btn" onclick="openAddClient('#add-client-popup')">Cancel</button>
         <button class="client-create-btn mb-4 mt-4">Apply</button>
       </footer>
     </div>
+     </section>
+
+     <section id="crop-image-popup">
+      <div class="d-flex flex-column justify-content-around px-4 pop-crop-inside">
+        <div class="text-secondary my-4">Crop Image </div>
+        <img src="" alt="cropImage"  id="cropImage"/>
+        <footer class="text-end">
+          <button class=" mb-4 mt-4 me-2 outline-btn" onclick="openAddClient('#crop-image-popup')">Cancel</button>
+          <button class="client-create-btn mb-4 mt-4" id="getCroppedImage">Crop</button>
+        </footer>
+        </div>
      </section>
     <!---------------------Popup End------------------------>
     <script src="design.js"></script>

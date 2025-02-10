@@ -90,8 +90,8 @@ const handleMenu = (value) => {
   $element.addClass("active-menu").find("i").css("color", "#41b9b4");
 };
 
-const openAddClient = () => {
-  $("#add-client-popup").toggleClass("visible");
+const openAddClient = (id) => {
+  $(id).toggleClass("visible");
 };
 
 function updateLabel() {
@@ -113,8 +113,12 @@ $(document).ready(function () {
 //Close Popup when Clicking Outside
 $(window).on("click", function (event) {
   const $popup = $("#add-client-popup");
+  const $cropImage = $("#crop-image-popup");
   if ($(event.target).is($popup)) {
-    $popup.removeClass("visible");
+    return $popup.removeClass("visible");
+  }
+  if ($(event.target).is($cropImage)) {
+    return $cropImage.removeClass("visible");
   }
 });
 
@@ -158,4 +162,31 @@ $("#client-logo").on("change", (e) => {
     $("#logo").attr("src", e.target.result).addClass("profile-image");
   };
   fileRender.readAsDataURL(file);
+});
+
+$(document).ready(function () {
+  var $image = $("#logo");
+  var $crop_image = $("#cropImage");
+  var cropper;
+
+  $("#client-logo").on("change", function (e) {
+    openAddClient("#crop-image-popup");
+    var reader = new FileReader();
+    reader.onload = function (event) {
+      $crop_image.attr("src", event.target.result);
+      if (cropper) cropper.destroy();
+      cropper = new Cropper($crop_image[0], {
+        aspectRatio: 16 / 9,
+        viewMode: 1,
+      });
+    };
+    reader.readAsDataURL(this.files[0]);
+  });
+
+  $("#getCroppedImage").on("click", function () {
+    var canvas = cropper.getCroppedCanvas();
+    var croppedImage = canvas.toDataURL("image/png");
+    $image.attr("src", croppedImage);
+    openAddClient("#crop-image-popup");
+  });
 });
