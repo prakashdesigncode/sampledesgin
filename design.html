@@ -109,8 +109,8 @@
         <div class="table-header pe-3 d-flex justify-content-between py-2">
           <div class="search-input my-1">
             <i class="bx bx-search-alt bx-burst"></i>
-            <input type="text" class="search ms-3" placeholder="Search..." />
-            <i class="bx bx-x "></i>
+            <input type="text" class="search ms-3" id="table-search" placeholder="Search..." />
+            <i class="bx bx-x cancel" id="removeSearch"></i>
           </div>
           <div class="d-flex gap-3 align-items-center">
             <div>
@@ -138,242 +138,7 @@
                 <th class="text-center">Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  #UPM <span class="ms-1 status-badge-success">Active</span>
-                </td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                  table </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn" onclick="handleNavigate()">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #UPM <span class="ms-1 status-badge-failure">In-Active</span>
-                </td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #UPM <span class="ms-1 status-badge-success">Active</span>
-                </td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-              <tr>
-                <td>#UPM</td>
-                <td>
-                  <img
-                    class="admin-image"
-                    alt="admin"
-                    width="35"
-                    height="35"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                  />
-                  <span class="ms-3">University of Collage</span>
-                </td>
-                <td>5</td>
-                <td>45</td>
-                <td>10</td>
-                <td class="text-center">
-                  <button type="button" class="manage-btn">Manage</button>
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="client-list"></tbody>
           </table>
         </div>
       </main>
@@ -401,32 +166,31 @@
               </div>
             <div class="mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Client Name</span>
-              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Client Name">
+              <input type="email" class="form-control mt-1" id="client-name" placeholder="Client Name">
             </div>
             <div class="mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Client Code</span>
-              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Client Code">
+              <input type="email" class="form-control mt-1" id="client-code" placeholder="Client Code">
             </div>
             <div class="mb-3">
               <div for="exampleFormControlInput1" class="form-label text-secondary">Client Themes</div>
-              <input type="color" class=" mt-1" id="exampleFormControlInput1" placeholder="Client Code">
+              <input type="color" class=" mt-1" id="client-theme" placeholder="Client Code">
             </div>
             <div class="mb-2">
               <div class="d-flex justify-content-between mb-3">
               <span for="exampleFormControlInput1" class="form-label text-secondary">Admins</span>
-              <button class="client-create-btn">Add Admin <i class="fa fa-plus text-white ps-1"></i></button>
+              <button class="client-create-btn" onclick="addEmails()">Add Admin <i class="fa fa-plus text-white ps-1"></i></button>
             </div>
-              <div class="d-flex align-items-center gap-3">
-                <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Mail">
-              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Code">
+            <div id="admin-emails">
+              <div class="d-flex align-items-center gap-3 mt-2">
+                <input type="email" class="form-control mt-1" id="admin-mail" placeholder="Admin Mail">
+              <input type="email" class="form-control mt-2" id="admin-code" placeholder="Admin Code">
+              <i class="bx bx-x cancel-admin mt-2 cursor-pointer" onclick="deleteEmail(this)"></i>
+              </div>
             </div>
-            <div class="d-flex align-items-center gap-3 mt-2">
-              <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Admin Mail">
-            <input type="email" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Admin Code">
-          </div>
             </div>
             <footer class=" text-end mt-1">
-              <button class="client-create-btn">Apply</button>
+              <button class="client-create-btn" onclick="handleBasic()">Apply</button>
             </footer>
           </div>
           </div>
@@ -435,26 +199,26 @@
             <div class="text-secondary">Apply Features Details </div>
             <div class="d-flex gap-4 flex-column flex-wrap mt-4">
               <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox" placeholder="Logo"/>
-              <label class="lite-grey" for="checkbox">Enabling anomaly detection</label>
+              <input class="basic-input-check" type="checkbox" id="anomaly-detection" placeholder="Logo"/>
+              <label class="lite-grey" for="anomaly-detection">Enabling anomaly detection</label>
              </div>
              <div class="position-relative d-flex gap-2">
-              <input class="basic-input-check" type="checkbox" id="checkbox1" placeholder="Logo"/>
-              <label class="lite-grey" for="checkbox1">enable Heba Item Creation</label>
+              <input class="basic-input-check" type="checkbox" id="heba-creation" placeholder="Logo"/>
+              <label class="lite-grey" for="heba-creation">enable Heba Item Creation</label>
              </div>
              <div class="text-secondary">Set Max Count</div>
              <div class="position-relative d-flex align-items-center gap-2 mx-2">
              
               <div class="lite-grey" for="checkbox2">1. <span class="mx-2">Max Users</span></div>
-              <input class="number-input mx-2" type="text" id="checkbox2"  placeholder=""/>
+              <input class="number-input mx-2" type="text" id="max-users" autocomplete="off"  placeholder=""/>
               </div>
               <div class="position-relative d-flex align-items-center gap-2 mx-2">
                 <div class="lite-grey" for="checkbox2">2. <span class="mx-2">Max Exams</span></div>
-                <input class="number-input" type="text" id="checkbox2"  placeholder=""/>
+                <input class="number-input" type="text" id="max-exams" autocomplete="off"  placeholder=""/>
                 </div>
             </div>
             <footer class=" text-end mt-2">
-              <button class="client-create-btn">Apply</button>
+              <button class="client-create-btn" onclick="handleFeatures()">Apply</button>
             </footer> 
           </div>
          
@@ -502,21 +266,50 @@
           </div>
         </div>
         <div id="label-management" class="tab-pane px-3 py-4 ">
-           <div class="text-end"><button class="client-create-btn">New</button></div>
-           <div class="d-flex flex-wrap gap-3">
+           <div class="text-end"><button class="client-create-btn" onclick="addLabelManage()">New</button></div>
+           <div class="d-flex flex-wrap gap-3" id="labelsArray">
             <div class="card rounded border-none" style="width: 23rem;">
               <div class="card-body ">
-                <div class=" card-title text-secondary text-center bg-white">Default (En)</div>
-                <div class="text-secondary my-3 pt-2">English Language</div>
-                <div class="bg-white text-end"> <button class="client-create-btn">Activate</button>  </div>
+                <div class=" card-title text-secondary justify-content-between align-items-center text-center bg-white d-flex">
+                  <div class="">Default (En)</div> 
+                  <div class="d-flex align-items-center gap-2">
+                  <button class="client-create-btn" onclick="addLabel('label-1')">Add Label</button>
+                  <i class="bx bx-x cancel-admin" onclick="removeLabel(this)"></i>
+                </div>
+                 </div>
+                <div class="text-secondary my-3 pt-2" id="label-1">
+                  <div class="mb-2 d-flex gap-2">
+                    <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Label">
+                    <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Value">
+                  </div>
+                  <div class="mb-2 d-flex gap-2">
+                    <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Label">
+                    <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Value">
+                  </div>
+                </div>
+                <div class="bg-white text-end"> <button class="client-create-btn">Activate</button></div>
               </div>
-             
             </div>
-            <div class="card rounded" style="width: 23rem;">
+            <div class="card rounded border-none" style="width: 23rem;">
               <div class="card-body">
-                <div class=" card-title text-secondary text-center bg-white">Default (Ab)</div>
-                <div class="text-secondary my-3 pt-2">Arabic Language</div>
-                <div class="bg-white text-end"> <button class="client-create-btn">Activate</button>  </div>
+                <div class=" card-title text-secondary justify-content-between align-items-center text-center bg-white d-flex">
+                 <div class="">Default (Ab)</div> 
+                 <div class="d-flex align-items-center gap-2">
+                 <button class="client-create-btn" onclick="addLabel('label-2')">Add Label</button>
+                 <i class="bx bx-x cancel-admin" onclick="removeLabel(this)"></i> 
+                </div>
+                </div>
+                <div class="text-secondary my-3 pt-2" id="label-2">
+                  <div class="mb-2 d-flex gap-2">
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Label">
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Value">
+                </div>
+                <div class="mb-2 d-flex gap-2">
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Label">
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Value">
+                </div>
+              </div>
+                <div class="bg-white text-end"> <button class="client-create-btn">Activate</button></div>
               </div>
              
             </div>
@@ -532,20 +325,24 @@
     <!---------------------Popup Start---------------------->
     <section id="add-client-popup" > 
       <div class="d-flex flex-column justify-content-around px-4 pop-inside">
-        <div class="text-secondary mt-4">Edit Basic Details </div>
+        <div class="text-secondary mt-4">Create Client</div>
         <div class="d-flex gap-3 flex-wrap mt-3">
-          <div class="position-relative">
-          <input class="basic-input" placeholder="Logo"/>
+          <!-- <div class="position-relative">
+          <input class="basic-input" placeholder="Logo" id="create-client-logo"/>
           <i class='bx bx-check bx-check-rounded '></i>
+         </div> -->
+         <div class="position-relative">
+          <input class="basic-input" placeholder="Client name" id="create-client-name"/>
+          <!-- <i class='bx bx-check bx-check-rounded '></i> -->
          </div>
          <div class="position-relative">
-          <input class="basic-input" placeholder="Client Code"/>
-          <i class='bx bx-check bx-check-rounded'></i>
+          <input class="basic-input" placeholder="Client Code" id="create-client-code"/>
+          <!-- <i class='bx bx-check bx-check-rounded'></i> -->
           </div>       
       </div>
       <footer class="text-end">
         <button class=" mb-4 mt-4 me-2 outline-btn" onclick="openAddClient('#add-client-popup')">Cancel</button>
-        <button class="client-create-btn mb-4 mt-4">Apply</button>
+        <button class="client-create-btn mb-4 mt-4" onclick="createClient()">Apply</button>
       </footer>
     </div>
      </section>

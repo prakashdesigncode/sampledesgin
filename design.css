@@ -46,7 +46,7 @@ body {
 .nav-bar {
   background-color: #fdfdfd;
   width: 15%;
-  min-width: 4.5%;
+  /* min-width: 4.5%; */
   transition: all 0.5s ease-in;
 }
 .bxs-chevron-left,
@@ -170,7 +170,11 @@ input[type ="color"]{
 .colorpick-eyedropper-input-trigger{
 display: none;
 }
-.bx-x,
+.cancel-admin{
+  font-size: 20px;
+  color: #a8a8a8;
+}
+.cancel,
 .bx-check-rounded {
   position: absolute;
   top: 14px;
@@ -413,8 +417,8 @@ color: var(--text-light-color);
 }
 
 .cropper-container{
-  width: 500 !important;
-  height: 500 !important;
+  width:660px!important;
+  height:500px !important;
 }
 
 .pop-inside {
@@ -694,4 +698,18 @@ input[type="file"].basic-input-check {
   width: 21px;
   height: 21px;
   border-radius: 50%;
+}
+
+
+#logo{
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+}
+
+.bx-trash{
+  font-size: 20px;
+}
+.bx-trash:hover{
+  color: rgb(221, 87, 87);
 }

@@ -1,3 +1,7 @@
+//goble start variable;
+let allClients = [];
+let baseUrl = "http://localhost:5000/api/v1";
+
 //Open Menu Toggle
 $("#toggle-menu").on("click", function () {
   const $openMenu = $(this);
@@ -6,7 +10,7 @@ $("#toggle-menu").on("click", function () {
   const $navLink = $(".nav-link-custom");
 
   const condition = $openMenu.hasClass("left");
-  $navBar.css("width", condition ? "4%" : "15%");
+  $navBar.css("width", condition ? "5%" : "15%");
   $topic.css("visibility", condition ? "hidden" : "visible");
   $navLink.css("display", condition ? "none" : "block");
   $openMenu.removeClass("left right").addClass(condition ? "right" : "left");
@@ -91,6 +95,8 @@ const handleMenu = (value) => {
 };
 
 const openAddClient = (id) => {
+  $("#create-client-name").val("");
+  $("#create-client-code").val("");
   $(id).toggleClass("visible");
 };
 
@@ -103,11 +109,196 @@ function updateLabel() {
   $label.text(fileName);
 }
 
+function addEmails() {
+  let adminEmails = $("#admin-emails");
+  adminEmails.append(` <div class="d-flex align-items-center gap-3">
+                <input type="email" class="form-control mt-1" id="admin-mail" placeholder="Admin Mail">
+              <input type="email" class="form-control mt-1" id="admin-code" placeholder="Admin Code">
+               <i class="bx bx-x cancel-admin mt-2 cursor-pointer" onClick="deleteEmail(this)"></i>
+            </div>`);
+}
+
+function deleteEmail(element) {
+  $(element).closest(".d-flex").remove();
+}
+
+function addLabel(element) {
+  $(`#${element}`).append(`<div class="mb-2 d-flex gap-2">
+                    <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Label">
+                    <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Value">
+                  </div>`);
+}
+
+function addLabelManage() {
+  let labelsArray = $("#labelsArray");
+  const childrenCount = labelsArray.children().length;
+  labelsArray.append(`
+    <div class="card rounded border-none" style="width: 23rem;" >
+              <div class="card-body">
+                <div class=" card-title text-secondary justify-content-between align-items-center text-center bg-white d-flex">
+                 <div class="">Default (Ab)</div> 
+                   <div class="d-flex align-items-center gap-2">
+                  <button class="client-create-btn" onclick="addLabel('label-${
+                    childrenCount + 1
+                  }')">Add Label</button>
+                  <i class="bx bx-x cancel-admin" onclick="removeLabel(this)"></i>
+                </div>
+                </div>
+                <div class="text-secondary my-3 pt-2" id="label-${
+                  childrenCount + 1
+                }"> <div class="mb-2 d-flex gap-2" >
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Label">
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Value">
+                </div>
+                <div class="mb-2 d-flex gap-2">
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Label">
+                  <input type="email" class="form-control mt-1" id="exampleFormControlInput1" placeholder="Value">
+                </div></div>
+                <div class="bg-white text-end"> <button class="client-create-btn">Activate</button></div>
+              </div>
+            </div>
+            `);
+}
+
+function removeLabel(element) {
+  $(element).closest(".card").remove();
+}
+
+function filterTable() {
+  const searchInput = $("#table-search").val();
+  const clientList = $("#client-list");
+  const filteredData = allClients.filter(function (item) {
+    return (
+      item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      item.code.toLowerCase().includes(searchInput.toLowerCase())
+    );
+  });
+  clientList.empty();
+  filteredData.forEach(function (item) {
+    clientList.append(`
+      <tr>
+        <td>
+          ${item?.code} 
+        </td>
+        <td>
+          <img
+            class="admin-image"
+            alt="admin"
+            width="35"
+            height="35"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+          />
+          <span class="ms-3">${item?.name}</span>
+        </td>
+        <td>5</td>  
+        <td>45</td>
+        <td>10</td>
+        <td class="d-flex align-items-center gap-2">
+          <button type="button" class="manage-btn" id="manage-btn" onclick="handleNavigate()">Manage</button>
+          <i class='bx bx-trash cursor-pointer ' data-id="${item?._id}" id="deleteClient" ></i>
+        </td>
+      </tr>
+    `);
+  });
+}
+
 /*-----------------functions Start-------------------------*/
+
+//call get apis like compound did mount
+$(document).ready(function () {
+  getClients();
+});
+
+//call get apis
+const getClients = (value) => {
+  const callback = (data) => {
+    if (value) openAddClient("#add-client-popup");
+    allClients = data;
+    const clientList = $("#client-list");
+    clientList.empty();
+    data.forEach(function (item) {
+      clientList.append(`<tr>
+                <td>
+                  ${item?.code} 
+                </td>
+                <td>
+                  <img
+                    class="admin-image"
+                    alt="admin"
+                    width="35"
+                    height="35"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
+                  />
+                  <span class="ms-3">${item?.name}</span>
+                  table </td>
+                <td>5</td>
+                <td>45</td>
+                <td>10</td>
+                <td class="d-flex align-items-center gap-2">
+                  <button type="button" class="manage-btn" id="manage-btn" onclick="handleNavigate()">Manage</button>
+                  <i class='bx bx-trash mx-3 cursor-pointer' data-id="${item?._id}"  id="deleteClient"></i>
+                </td>
+              </tr>`);
+    });
+  };
+  apiCall({
+    url: `${baseUrl}/account`,
+    type: "GET",
+    callback,
+  });
+};
+
+//call post apis
+const createClient = () => {
+  const name = $("#create-client-name").val();
+  const code = $("#create-client-code").val();
+  apiCall({
+    url: `${baseUrl}/account`,
+    type: "POST",
+    data: { name, code },
+    callback: getClients,
+  });
+};
+
+//call delete apis
+const deleteClient = (_id) => {
+  apiCall({
+    url: `${baseUrl}/account/${_id}`,
+    type: "delete",
+    callback: getClients,
+  });
+};
 
 // Document Ready
 $(document).ready(function () {
   $(".page").first().show();
+  $(`#max-users`).keypress(function (e) {
+    var charCode = e.which ? e.which : e.keyCode;
+    if (String.fromCharCode(charCode).match(/[^0-9]/g)) return false;
+  });
+  $("#max-users").on("paste", function (event) {
+    event.preventDefault();
+    $("#max-users").val("");
+  });
+  $("#max-exams").on("paste", function (event) {
+    event.preventDefault();
+    $("#max-exams").val("");
+  });
+  $(`#max-exams`).keypress(function (e) {
+    var charCode = e.which ? e.which : e.keyCode;
+    if (String.fromCharCode(charCode).match(/[^0-9]/g)) return false;
+  });
+  $("#table-search").on("input", function () {
+    filterTable();
+  });
+  $("#removeSearch").on("click", function () {
+    $("#table-search").val("");
+    filterTable();
+  });
+  $("#client-list").on("click", "#deleteClient", function () {
+    const _id = $(this).data("id");
+    deleteClient(_id);
+  });
 });
 
 //Close Popup when Clicking Outside
@@ -123,7 +314,6 @@ $(window).on("click", function (event) {
 });
 
 /*tabs*/
-
 const tabsOptions = document.querySelectorAll(".tabs button");
 const activeStatus = document.querySelector(".tabs .active");
 const tabContents = document.querySelectorAll(".tab-content .tab-pane");
@@ -134,7 +324,6 @@ const setActiveTab = (index) => {
   activeStatus.style.left = `${
     tabRect.left - selectedTab.parentElement.getBoundingClientRect().left
   }px`;
-  // activeStatus.style.width = `${tabRect.width}px`;
   tabContents.forEach((content) => content.classList.remove("active"));
   const targetTab = document.querySelector(
     selectedTab.getAttribute("data-bs-target")
@@ -152,17 +341,6 @@ for (let i = 0; i < tabsOptions.length; i++) {
     tabsOptions[i].style.color = "#41b9b4";
   };
 }
-
-//crop image
-
-$("#client-logo").on("change", (e) => {
-  const file = e.target.files[0];
-  const fileRender = new FileReader();
-  fileRender.onload = function (e) {
-    $("#logo").attr("src", e.target.result).addClass("profile-image");
-  };
-  fileRender.readAsDataURL(file);
-});
 
 $(document).ready(function () {
   var $image = $("#logo");
@@ -190,3 +368,46 @@ $(document).ready(function () {
     openAddClient("#crop-image-popup");
   });
 });
+
+// api integration data Start
+function apiCall({ url = "", data = "", type = "", callback = () => {} }) {
+  $.ajax({
+    url,
+    type,
+    ...(data && { data: JSON.stringify(data) }),
+    contentType: "application/json",
+    dataType: "json",
+    success: (response) => {
+      const { data = "" } = response;
+      callback(data);
+    },
+    error: (error) => {
+      console.log(error);
+    },
+  });
+}
+
+//basic details data
+const handleBasic = () => {
+  let clientLogo = $("#logo").attr("src");
+  let clientName = $("#client-name").val();
+  let clientCode = $("#client-code").val();
+  let clientThemes = $("#client-theme").val();
+  let admins = [];
+  $("#admin-emails .d-flex").each(function () {
+    let adminEmail = $(this).find("#admin-mail").val();
+    let adminCode = $(this).find("#admin-code").val();
+    admins.push({ adminEmail, adminCode });
+  });
+  const data = { clientLogo, clientName, clientCode, clientThemes, admins };
+  return data;
+};
+
+const handleFeatures = () => {
+  let isEnableAnomaly = $("#anomaly-detection").prop("checked");
+  let isEnableHeba = $("#heba-creation").prop("checked");
+  let maxUsers = $("#max-users").val();
+  let maxExams = $("#max-exams").val();
+  const data = { isEnableAnomaly, isEnableHeba, maxExams, maxUsers };
+  return data;
+};
