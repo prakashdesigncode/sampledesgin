@@ -194,7 +194,7 @@ function filterTable() {
         <td>45</td>
         <td>10</td>
         <td class="d-flex align-items-center gap-2">
-          <button type="button" class="manage-btn" id="manage-btn" onclick="handleNavigate()">Manage</button>
+          <button type="button" class="manage-btn" id="manage-btn" data-navigateId="${item?._id}">Manage</button>
           <i class='bx bx-trash cursor-pointer ' data-id="${item?._id}" id="deleteClient" ></i>
         </td>
       </tr>
@@ -206,13 +206,13 @@ function filterTable() {
 
 //call get apis like compound did mount
 $(document).ready(function () {
-  getClients();
+  getClients()();
 });
 
 //call get apis
-const getClients = (value) => {
+const getClients = (isToggle) => () => {
   const callback = (data) => {
-    if (value) openAddClient("#add-client-popup");
+    if (isToggle) openAddClient("#add-client-popup");
     allClients = data;
     const clientList = $("#client-list");
     clientList.empty();
@@ -235,7 +235,7 @@ const getClients = (value) => {
                 <td>45</td>
                 <td>10</td>
                 <td class="d-flex align-items-center gap-2">
-                  <button type="button" class="manage-btn" id="manage-btn" onclick="handleNavigate()">Manage</button>
+                  <button type="button" class="manage-btn" id="manage-btn" data-navigateId="${item?._id}" >Manage</button>
                   <i class='bx bx-trash mx-3 cursor-pointer' data-id="${item?._id}"  id="deleteClient"></i>
                 </td>
               </tr>`);
@@ -256,7 +256,7 @@ const createClient = () => {
     url: `${baseUrl}/account`,
     type: "POST",
     data: { name, code },
-    callback: getClients,
+    callback: getClients(true),
   });
 };
 
@@ -265,10 +265,20 @@ const deleteClient = (_id) => {
   apiCall({
     url: `${baseUrl}/account/${_id}`,
     type: "delete",
-    callback: getClients,
+    callback: getClients(false),
   });
 };
 
+//call put apis
+const updateClient = (_id) => {
+  const themes = { primary, secondary };
+  const logo = { url, alt };
+  apiCall({
+    url: `${baseUrl}/account/${_id}`,
+    type: "put",
+    data: { settings: { ...themes, ...logo } },
+  });
+};
 // Document Ready
 $(document).ready(function () {
   $(".page").first().show();
@@ -295,9 +305,11 @@ $(document).ready(function () {
     $("#table-search").val("");
     filterTable();
   });
-  $("#client-list").on("click", "#deleteClient", function () {
-    const _id = $(this).data("id");
-    deleteClient(_id);
+  $("#client-list").on("click", "#manage-btn", "#deleteClient", function () {
+    const removeClient = $(this).data("id");
+    const navigateId = $(this).data("navigateId");
+    if (removeClient) deleteClient(removeClient);
+    if (navigateId) handleNavigate();
   });
 });
 
